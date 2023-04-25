@@ -1,9 +1,8 @@
 import {useState,useEffect} from 'react'
-import { RouterProvider } from 'react-router-dom'
 
 export const useFetch = (url)=>{
     const [data,setData] = useState(null)
-    const [isPending,setPending] = useState(null)
+    const [isPending,setPending] = useState(false)
     const [error,setError] = useState(null)
 
     useEffect(()=>{
@@ -27,7 +26,7 @@ export const useFetch = (url)=>{
                     console.log('context fetch was aborted')
                 }else{
                     setPending(false)
-                    console.log('could not fetch the data ')
+                    setError('could not fetch the data ')
                 }
             }
         }
@@ -35,7 +34,6 @@ export const useFetch = (url)=>{
         return ()=>{
             controller.abort()
         }
-
     },[url])
     return {data,error,isPending}
 }
