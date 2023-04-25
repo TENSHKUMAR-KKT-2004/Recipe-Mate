@@ -1,4 +1,4 @@
-import './create.css'
+import './Create.css'
 
 const Create = () => {
     return ( <div>Create</div> );

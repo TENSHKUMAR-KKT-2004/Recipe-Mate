@@ -1,0 +1,22 @@
+{
+    "recipes":[
+        {  "id":1,
+            "title":"late for lunch.",
+            "ingredients":[
+                "1 arrot","1 leek"
+            ],
+            "method": "erfnointortngrtngrwntcgntg",
+            "cookingTime" : "45 minutes"
+
+    },
+    {  "id":2,
+            "title":"late for lunch.",
+            "ingredients":[
+                "1 arrot","1 leek"
+            ],
+            "method": "erfnointortngrtngrwntcgntg",
+            "cookingTime" : "45 minutes"
+
+    }
+    ]
+}
