@@ -8,8 +8,8 @@ const Home = () => {
     const [url, setUrl] = useState('http://localhost:3004/recipes')
     const {data,error,isPending} = useFetch(url)
     return ( <div className='home'>
-        {isPending && <p className='loading'>Loading...</p>}
-        {error && <p className='error'>{error}</p> }
+        { isPending && <p className='loading'>Loading...</p> }
+        { error && <p className='error'>{error}</p>  }
         { data && <RecipesList recipes={data} /> }
     </div> );
 }
