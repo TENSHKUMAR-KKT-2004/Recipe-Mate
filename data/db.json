@@ -1,22 +1,60 @@
 {
-    "recipes":[
-        {  "id":1,
-            "title":"late for lunch.",
-            "ingredients":[
-                "1 arrot","1 leek"
-            ],
-            "method": "erfnointortngrtngrwntcgntg",
-            "cookingTime" : "45 minutes"
-
+  "recipes": [
+    {
+      "id": 1,
+      "title": "late for lunch.",
+      "ingredients": [
+        "1 arrot",
+        "1 leek"
+      ],
+      "method": "erfnointortngrtngrwntcgntg",
+      "cookingTime": "45 minutes"
     },
-    {  "id":2,
-            "title":"late for lunch.",
-            "ingredients":[
-                "1 arrot","1 leek"
-            ],
-            "method": "erfnointortngrtngrwntcgntg",
-            "cookingTime" : "45 minutes"
-
+    {
+      "id": 2,
+      "title": "late for lunch.",
+      "ingredients": [
+        "1 arrot",
+        "1 leek"
+      ],
+      "method": "erfnointortngrtngrwntcgntg",
+      "cookingTime": "45 minutes"
+    },
+    {
+      "title": "odng",
+      "method": "nrofgnore",
+      "cookTime": "11 minutes",
+      "ingredients": [
+        "rngfiore"
+      ],
+      "id": 3
+    },
+    {
+      "title": "odng",
+      "method": "nrofgnore",
+      "cookTime": "11 minutes",
+      "ingredients": [
+        "rngfiore"
+      ],
+      "id": 4
+    },
+    {
+      "title": "njkdfv",
+      "method": "fdvndfjnvdf",
+      "cookTime": "22 minutes",
+      "ingredients": [
+        "dkjvbdgb"
+      ],
+      "id": 5
+    },
+    {
+      "title": "123",
+      "method": "wwr4",
+      "cookTime": "131 minutes",
+      "ingredients": [
+        "32312"
+      ],
+      "id": 6
     }
-    ]
+  ]
 }
