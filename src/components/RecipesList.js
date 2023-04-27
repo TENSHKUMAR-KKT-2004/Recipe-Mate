@@ -2,6 +2,10 @@ import { Link } from 'react-router-dom';
 import './RecipesList.css'
 
 const RecipesList = ({ recipes }) => {
+    if (recipes.length === 0){
+        return <div className='error'>No Recipes to Load...</div>
+    }
+
     return (
         <div className="recipe-list">
             {
