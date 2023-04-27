@@ -1,7 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import { ThemeContextProvider } from './context/ThemeContext';
-
 // styles
 import './App.css';
 
@@ -15,10 +13,12 @@ import Search from './pages/search/Search'
 import Recipe from './pages/recipe/Recipe'
 import ThemeSelector from './components/ThemeSelector';
 
+import { useTheme } from './hooks/useTheme';
+
 function App() {
+  const {mode} = useTheme()
   return (
-    <ThemeContextProvider>
-      <div className="App">
+      <div className={`App ${mode}`}>
         <BrowserRouter>
           <Navbar />
           <ThemeSelector />
@@ -30,7 +30,6 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div>
-    </ThemeContextProvider>
   );
 }
 
