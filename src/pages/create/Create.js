@@ -37,7 +37,7 @@ const Create = () => {
         if (data) {
             navigate({ pathname: '/' })
         }
-    }, [data])
+    }, [data,navigate])
 
     return (
         <div className='create'>
