@@ -1,7 +1,6 @@
-
-import { useEffect, useRef, useState } from 'react';
+import { firestoreDB } from '../../firebase/config';
+import { useRef, useState } from 'react';
 import './Create.css'
-import { useFetch } from '../../hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
@@ -10,16 +9,23 @@ const Create = () => {
     const [cookTime, setCookTime] = useState("")
     const [newIngredient, setNewIngredient] = useState("")
     const [ingredients, setIngredients] = useState([])
+    const [isPending, setPending] = useState(false)
 
     const navigate = useNavigate()
 
     const ingredientInput = useRef(null)
 
-    const { postData, data, isPending } = useFetch("http://localhost:3004/recipes", "POST")
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        postData({ title, method, cookTime: cookTime + ' minutes', ingredients })
+
+        const newDoc = { title, method, cookingTime: cookTime + ' minutes', ingredients }
+        try {
+            setPending(true)
+            await firestoreDB.collection('recipes').add(newDoc)
+            navigate({ pathname: '/' })
+        } catch (err) {
+            console.log(err.message)
+        }
     }
 
     const handleClick = (e) => {
@@ -32,12 +38,6 @@ const Create = () => {
         setNewIngredient('')
         ingredientInput.current.focus()
     }
-
-    useEffect(() => {
-        if (data) {
-            navigate({ pathname: '/' })
-        }
-    }, [data,navigate])
 
     return (
         <div className='create'>
