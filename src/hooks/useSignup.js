@@ -19,11 +19,10 @@ export const useSignup = ()=>{
             await res.user.updateProfile({displayName})
             // dispatch login action to store user
             dispatch({type:'LOGIN',payload:res.user})
-            
+
             setPending(false)
             setError(null)
         }catch(err){
-            console.log(err.message)
             setError(err.message)
             setPending(false)
         }
