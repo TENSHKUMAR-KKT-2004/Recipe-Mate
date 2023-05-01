@@ -11,24 +11,24 @@ const Home = () => {
 
     useEffect(() => {
         setPending(true)
-        firestoreDB.collection('recipes').get()
-            .then((snapshot) => {
-                if (snapshot.empty) {
-                    setError('No recipes to load')
-                    setPending(false)
-                } else {
-                    let result = []
-                    snapshot.docs.forEach(doc => {
-                        result.push({ id: doc.id, ...doc.data() })
-                    })
-                    setData(result)
-                    setPending(false)
-                }
-            })
-                .catch(err=>{
-                    setError(err.message)
-                    setPending(false)
+        const unsub = firestoreDB.collection('recipes').onSnapshot((snapshot) => {
+            if (snapshot.empty) {
+                setError('No recipes to load')
+                setPending(false)
+            } else {
+                let result = []
+                snapshot.docs.forEach(doc => {
+                    result.push({ id: doc.id, ...doc.data() })
                 })
+                setData(result)
+                setPending(false)
+            }
+        }, (err => {
+            setPending(false)
+            setError(err.message)
+        }))
+
+        return () => unsub()
     }, [])
 
     return (<div className='home'>
