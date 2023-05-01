@@ -13,6 +13,7 @@ const SearchBar = () => {
         navigate(
             {pathname:'/search',
             search:`?q=${term}`})
+            setTerm('')
     }
 
     return (
