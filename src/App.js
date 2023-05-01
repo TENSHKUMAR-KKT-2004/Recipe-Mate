@@ -26,7 +26,7 @@ function App() {
       {authIsReady && (
         <BrowserRouter>
           <Navbar />
-          <ThemeSelector />
+          {user && <ThemeSelector />}
           <Routes>
             <Route path="/" element={user ? <Home /> : <Navigate to='/login' /> } />
             <Route path="/create" element={user ? <Create /> : <Navigate to='/login' /> } />
