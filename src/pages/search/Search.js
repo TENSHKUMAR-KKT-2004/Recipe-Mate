@@ -18,13 +18,7 @@ const Search = () => {
 
         let query = firestoreDB.collection('recipes')
         if (searchTerm) {
-            // split the search term into individual words
-            const searchTerms = searchTerm.split(' ');
-
-            // construct a query for each individual word in the search term
-            searchTerms.forEach(term => {
-                query = query.where('title', '>=', term).where('title', '<=', term + '\uf8ff');
-            })
+            query = query.where('title', '>=', searchTerm).where('title', '<=', searchTerm + '\uf8ff')
         }
         query.get()
             .then((querySnapshot) => {
