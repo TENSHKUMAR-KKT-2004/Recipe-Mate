@@ -12,6 +12,8 @@ const Navbar = () => {
                 <Link to='/' className='brand'><h1>Recipe-Mate</h1></Link>
                 <SearchBar />
                 <Link to='/create'>Create Recipe</Link>
+                {/* <Link to='/login'>Login</Link>
+                <Link to='/signup'>Signup</Link> */}
             </nav>
         </div>
      );
