@@ -17,7 +17,7 @@
     text-decoration: none;
 }
 
-.navbar a:last-child{
+.navbar a:not(:first-child) {
     color: #fff;
     text-decoration: none;
     margin-left: 40px;
@@ -26,7 +26,7 @@
     border-radius: 4px;
 }
 
-.navbar a:last-child:hover{
+.navbar a:not(:first-child):hover {
     background: #fff;
     color: #333;
 }
