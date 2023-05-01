@@ -6,3 +6,7 @@
 .App.dark{
   background: #333233;
 }
+
+.error{
+  color: red;
+}

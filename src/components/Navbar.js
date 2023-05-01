@@ -13,8 +13,11 @@ const Navbar = () => {
     return (
         <div className="navbar" style={{ background: color }}>
             <nav>
-                <Link to='/' className='brand'><h1>Recipe-Mate</h1></Link>
-                {!user && <><Link to='/login'>Login</Link>
+                {user && <Link to='/' className='brand'><h1>Recipe-Mate</h1></Link> }
+                
+                {!user && <>
+                <Link to='/login' className='brand'><h1>Recipe-Mate</h1></Link>
+                <Link to='/login'>Login</Link>
                 <Link to='/signup'>Signup</Link></>}
 
                 {user && <>
