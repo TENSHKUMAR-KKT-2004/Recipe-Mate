@@ -21,7 +21,6 @@ const AuthContextProvider = ({children}) => {
         user:null,
         authIsReady : false
     })
-    console.log(state)
 
     useEffect(()=>{
         const unsub = firebaseAuth.onAuthStateChanged((user)=>{
