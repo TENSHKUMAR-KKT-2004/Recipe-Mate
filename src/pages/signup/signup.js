@@ -1,12 +1,13 @@
 import { useSignup } from '../../hooks/useSignup'
 import './signup.css'
 import { useState } from 'react'
+import GoogleButton from 'react-google-button'
 
 const Signup = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [displayName, setDisplayName] = useState('')
-  const {signup,error,isPending} = useSignup()
+  const {signup,signUpWithGoogle,error,isPending} = useSignup()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -45,6 +46,11 @@ const Signup = () => {
       </label>
       {isPending ? <button className="btn" disabled>Loading..</button> : <button className="btn">Signup</button> }
       {error && <div className="error">{error}</div> }
+      <div className="google-auth-button">
+        <div className='google-btn'>
+        <GoogleButton onClick={()=>signUpWithGoogle()}/>
+        </div>
+      </div>
     </form>
   )
 }

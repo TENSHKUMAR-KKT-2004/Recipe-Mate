@@ -31,3 +31,12 @@
     text-decoration: none;
     margin: 20px auto;
   }
+
+  .login-form .google-auth-button{
+    position: relative;
+  }
+  
+  .login-form .google-auth-button .google-btn{
+    position: absolute;
+    left: 15%;
+  }
