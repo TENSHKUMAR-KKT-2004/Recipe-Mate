@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './login.css'
 import { useLogin } from '../../hooks/useLogin'
 import GoogleButton from 'react-google-button'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -19,7 +20,7 @@ const Login = () => {
 
   return (
     <form onSubmit={handleSubmit} className='login-form'>
-      <h2>login</h2>
+      <h2>Login</h2>
       <label>
         <span>email:</span>
         <input
@@ -36,6 +37,9 @@ const Login = () => {
           value={password}
         />
       </label>
+      <span className="forgot-password">
+          <Link to='/forgot-password'>Forgot password?</Link>
+      </span>
       {isPending ? <button className="btn" disabled>Loding...</button> : <button className="btn">Login</button>}
       {error && <div className="error">{error}</div>}
       <div className="google-auth-button">
