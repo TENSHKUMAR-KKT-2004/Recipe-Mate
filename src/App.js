@@ -24,7 +24,7 @@ function App() {
   const {mode} = useTheme()
   const {user,authIsReady} = useAuthContext()
   return (
-      <div className={`App ${mode}`}>
+      <div className={user ? `App ${mode}` : 'App'}>
       {authIsReady && (
         <BrowserRouter>
           <Navbar />
