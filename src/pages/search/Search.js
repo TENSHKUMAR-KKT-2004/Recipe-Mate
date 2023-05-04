@@ -23,8 +23,7 @@ const Search = () => {
             console.log(searchTerm)
             query = query.where('title', '>=', searchTerm).where('title', '<=', searchTerm + '\uf8ff')
         }
-        query.get()
-            .then((querySnapshot) => {
+        query.onSnapshot((querySnapshot) => {
                 let data = querySnapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data(),
@@ -32,12 +31,10 @@ const Search = () => {
                 data = data.filter((recipe) => recipe.uid === user.uid)
                 setResult(data)
                 setPending(false)
-            })
-            .catch((err) => {
+            },(err)=>{
                 setError(err.message)
                 setPending(false)
             })
-
     }, [searchTerm, user.uid])
 
     return (<div>
