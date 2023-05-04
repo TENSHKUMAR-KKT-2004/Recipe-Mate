@@ -4,6 +4,7 @@ import RecipesList from '../../components/RecipesList'
 
 import './Search.css'
 import { useEffect,useState } from 'react'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 const Search = () => {
     const [queryString] = useSearchParams()
@@ -12,20 +13,23 @@ const Search = () => {
     const [result, setResult] = useState([]);
     const [isPending, setPending] = useState(false);
     const [error, setError] = useState(null);
+    const {user} = useAuthContext()
 
-    useEffect(() => {
+    useEffect( () => {
         setPending(true)
 
         let query = firestoreDB.collection('recipes')
         if (searchTerm) {
+            console.log(searchTerm)
             query = query.where('title', '>=', searchTerm).where('title', '<=', searchTerm + '\uf8ff')
         }
         query.get()
             .then((querySnapshot) => {
-                const data = querySnapshot.docs.map((doc) => ({
+                let data = querySnapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data(),
                 }))
+                data = data.filter((recipe) => recipe.uid === user.uid)
                 setResult(data)
                 setPending(false)
             })
@@ -34,7 +38,7 @@ const Search = () => {
                 setPending(false)
             })
 
-    }, [searchTerm])
+    }, [searchTerm, user.uid])
 
     return (<div>
         <h2 className="page-title">

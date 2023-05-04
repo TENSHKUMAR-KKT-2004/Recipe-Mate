@@ -2,6 +2,7 @@ import { firestoreDB } from '../../firebase/config';
 import { useRef, useState } from 'react';
 import './Create.css'
 import { useNavigate } from 'react-router-dom';
+import {useAuthContext} from '../../hooks/useAuthContext'
 
 const Create = () => {
     const [title, setTitle] = useState("")
@@ -11,6 +12,8 @@ const Create = () => {
     const [ingredients, setIngredients] = useState([])
     const [isPending, setPending] = useState(false)
 
+    const {user} = useAuthContext()
+
     const navigate = useNavigate()
 
     const ingredientInput = useRef(null)
@@ -18,7 +21,7 @@ const Create = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const newDoc = { title, method, cookingTime: cookTime + ' minutes', ingredients }
+        const newDoc = { title, method, cookingTime: cookTime + ' minutes', ingredients,uid : user.uid }
         try {
             setPending(true)
             await firestoreDB.collection('recipes').add(newDoc)
