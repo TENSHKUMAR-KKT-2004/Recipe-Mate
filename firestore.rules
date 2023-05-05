@@ -1,9 +1,15 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if
-          request.time < timestamp.date(2023, 5, 28);
+    match /recipes/{document=**} {
+      // allow read, write ;
+      // allow read, update, delete, create;
+
+      // only authenticated users can access the data
+      allow create : if request.auth != null;
+      
+      // provide access based on who is currently loged in
+      allow read, delete, update : if request.auth.uid == resource.data.uid;
     }
   }
 }
