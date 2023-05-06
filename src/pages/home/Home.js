@@ -17,17 +17,20 @@ const Home = () => {
             if (snapshot.empty) {
                 setError('No recipes to load')
                 setPending(false)
+                setData(null)
             } else {
                 let result = []
                 snapshot.docs.forEach(doc => {
                     result.push({ id: doc.id, ...doc.data() })
                 })
+                setError(null)
                 setData(result)
                 setPending(false)
             }
         }, (err => {
             setPending(false)
             setError(err.message)
+            setData(null)
         }))
 
         return () => unsub()

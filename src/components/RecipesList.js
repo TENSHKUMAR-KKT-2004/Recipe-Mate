@@ -5,12 +5,8 @@ import {firestoreDB} from '../firebase/config'
 
 import Trashcan from '../assets/delete_icon.svg'
 
-const RecipesList = ({ recipes }) => {
+const RecipesList = ({ recipes,error }) => {
     const {mode} = useTheme()
-    
-    if (recipes.length === 0){
-        return <div className='error'>No Recipes to Load...</div>
-    }
 
     const handleClick = (id)=>{
         firestoreDB.collection('recipes').doc(id).delete()

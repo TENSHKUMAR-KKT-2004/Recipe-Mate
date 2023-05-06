@@ -20,7 +20,6 @@ const Search = () => {
 
         let query = firestoreDB.collection('recipes')
         if (searchTerm) {
-            console.log(searchTerm)
             query = query.where('title', '>=', searchTerm).where('title', '<=', searchTerm + '\uf8ff')
         }
         query.onSnapshot((querySnapshot) => {
@@ -29,6 +28,7 @@ const Search = () => {
                     ...doc.data(),
                 }))
                 data = data.filter((recipe) => recipe.uid === user.uid)
+                setError(null)
                 setResult(data)
                 setPending(false)
             },(err)=>{
@@ -43,7 +43,7 @@ const Search = () => {
         </h2>
         {error && <p className="error">{error}</p>}
         {isPending && <p className="loading">Loading...</p>}
-        {result && <RecipesList recipes={result} />}
+        {result.length === 0 && !isPending ? <div className='error'>No Recipes to Load...</div> : <RecipesList recipes={result}/>}
     </div>)
 }
 

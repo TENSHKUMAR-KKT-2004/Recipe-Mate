@@ -12,7 +12,7 @@ export const useForgotPassword = () => {
         setIsMailSended(false)
         const abortController = new AbortController()
 
-        await firebaseAuth.sendPasswordResetEmail(email,{url:'https://recipe-mate-5bzb.onrender.com/login'})
+        await firebaseAuth.sendPasswordResetEmail(email,{url:'https://recipe-mate-site.firebaseapp.com/login'})
             .then(() => {
                 // Password reset email sent!
                 setIsMailSended(true)
